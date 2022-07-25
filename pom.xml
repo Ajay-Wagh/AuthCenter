@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ajaywagh</groupId>
 	<artifactId>authcenter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>authcenter</name>
 	<description>Authentication Manager for WatchFace</description>
@@ -36,6 +36,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
