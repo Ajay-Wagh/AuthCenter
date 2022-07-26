@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>AuthCenter</title>
 </head>
+
 <body>
-Please login to continue..
+
+    <h1>Add Application</h1>
+    <form action="/addapp" method="post" autocomplete="off">
+        <label>User ID:</label><br>
+        <input type="text" name="userid" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" required><br><br>
+        <label>New App ID:</label><br>
+        <input type="text" name="appid" required><br><br>
+        <input type="submit" value="Add App">
+    </form>
+    <hr>
+
+    <h1>Remove Application</h1>
+    <form action="/removeapp" method="post" autocomplete="off">
+        <label for="userid">User ID:</label><br>
+        <input type="text" name="userid" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" required><br><br>
+        <label for="appid">App ID:</label><br>
+        <input type="text" id="appid" name="appid"  required><br><br>
+        <input type="submit" value="Remove App">
+    </form>
+    <hr>
+
+    <h1>Add/Update User</h1>
+    <form action="/adduser" method="post" autocomplete="off">
+        <label>User ID:</label><br>
+        <input type="text" name="userid" required><br>
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+        <label>New User ID:</label><br>
+        <input type="text" name="newuserid" required><br>
+        <label>New Password:</label><br>
+        <input type="password" name="newpassword" required><br><br>
+        <input type="submit" value="Add/Update User">
+    </form>
+    <hr>
+
+    <h1>Remove User</h1>
+    <form action="/removeuser" method="post" autocomplete="off">
+        <label for="userid">User ID:</label><br>
+        <input type="text" id="userid" name="userid" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="useridtoremove">User ID to Remove:</label><br>
+        <input type="text" id="useridtoremove" name="useridtoremove" required><br><br>
+        <input type="submit" value="Remove User">
+    </form>
+
 </body>
+
 </html>
