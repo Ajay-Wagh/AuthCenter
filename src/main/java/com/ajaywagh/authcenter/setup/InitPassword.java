@@ -1,8 +1,8 @@
 package com.ajaywagh.authcenter.setup;
 
 
-import com.ajaywagh.authcenter.POJO.Admin;
-import com.ajaywagh.authcenter.repositories.AdminRepository;
+import com.ajaywagh.authcenter.datamodels.Admin;
+import com.ajaywagh.authcenter.datarepositories.AdminRepository;
 import com.ajaywagh.authcenter.securityservices.Encryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

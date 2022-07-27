@@ -1,4 +1,4 @@
-package com.ajaywagh.authcenter.POJO;
+package com.ajaywagh.authcenter.datamodels;
 
 import lombok.*;
 
@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "user_permissions")
-public class UserPermission {
+@Table(name = "app_permissions")
+public class AppPermission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

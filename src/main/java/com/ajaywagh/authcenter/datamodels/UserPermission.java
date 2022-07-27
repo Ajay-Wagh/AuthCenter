@@ -1,20 +1,20 @@
-package com.ajaywagh.authcenter.POJO;
+package com.ajaywagh.authcenter.datamodels;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "user_channels")
-public class UserChannel {
+@ToString
+@Table(name = "user_permissions")
+public class UserPermission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(nullable = false, unique = true)
-    private String channel;
+    private String permission;
 }
