@@ -1,4 +1,4 @@
-package com.ajaywagh.authcenter.POJO;
+package com.ajaywagh.authcenter.datamodels;
 
 import lombok.*;
 import org.hibernate.Hibernate;
