@@ -3,7 +3,7 @@ package com.ajaywagh.authcenter.setup;
 
 import com.ajaywagh.authcenter.datamodels.Admin;
 import com.ajaywagh.authcenter.datarepositories.AdminRepository;
-import com.ajaywagh.authcenter.securityservices.Encryptor;
+import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -22,11 +22,11 @@ public class InitPassword {
     AdminRepository adminRepository;
 
     @Autowired
-    Encryptor encryptor;
+    EncryptorService encryptorService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void setInitialPassword() {
-        Admin admin = new Admin(defaultAdminId, encryptor.encrypt(defaultAdminPassword));
+        Admin admin = new Admin(defaultAdminId, encryptorService.encrypt(defaultAdminPassword));
         adminRepository.saveAndFlush(admin);
     }
 }

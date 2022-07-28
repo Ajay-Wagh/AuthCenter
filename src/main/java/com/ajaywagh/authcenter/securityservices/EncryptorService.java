@@ -1,5 +1,5 @@
 package com.ajaywagh.authcenter.securityservices;
 
-public interface Encryptor {
+public interface EncryptorService {
     String encrypt(String password);
 }
