@@ -1,12 +1,24 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import static com.ajaywagh.authcenter.requestmodels.admin.AddApp.MAX_APP_ID_LENGTH;
-import static com.ajaywagh.authcenter.requestmodels.admin.AddApp.MIN_APP_ID_LENGTH;
+import static com.ajaywagh.authcenter.requestmodels.admin.AddAppRequest.MAX_APP_ID_LENGTH;
+import static com.ajaywagh.authcenter.requestmodels.admin.AddAppRequest.MIN_APP_ID_LENGTH;
 
-public class RemoveApp {
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class RemoveAppRequest {
+    @Valid
     @NotNull(message = "Header is mandatory")
     Head head;
 

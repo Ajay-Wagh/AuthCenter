@@ -1,6 +1,6 @@
 package com.ajaywagh.authcenter.securityservicesimpl;
 
-import com.ajaywagh.authcenter.securityservices.Encryptor;
+import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 @Component("encryptor")
-public class EncryptorImpl implements Encryptor {
+public class EncryptorServiceImpl implements EncryptorService {
     @Value("${hashing_algorithm}")
     String HASHING_ALGO;
 

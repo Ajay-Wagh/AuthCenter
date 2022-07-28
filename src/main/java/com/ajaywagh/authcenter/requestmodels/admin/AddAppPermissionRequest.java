@@ -1,12 +1,24 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import static com.ajaywagh.authcenter.requestmodels.admin.AddAppPermission.MAX_APP_PERMISSION_LENGTH;
-import static com.ajaywagh.authcenter.requestmodels.admin.AddAppPermission.MIN_APP_PERMISSION_LENGTH;
 
-public class RemoveAppPermission {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddAppPermissionRequest {
+    public static final int MIN_APP_PERMISSION_LENGTH=4;
+    public static final int MAX_APP_PERMISSION_LENGTH=20;
+
+    @Valid
     @NotNull(message = "Header is mandatory")
     Head head;
 

@@ -1,16 +1,28 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-public class AddApp {
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddAppRequest {
     public static final int MIN_APP_ID_LENGTH=5;
     public static final int MAX_APP_ID_LENGTH=15;
     public static final int MIN_PERMISSIONS_COUNT=1;
     public static final int MAX_PERMISSIONS_COUNT=20;
 
+    @Valid
     @NotNull(message = "Header is mandatory")
     Head head;
 

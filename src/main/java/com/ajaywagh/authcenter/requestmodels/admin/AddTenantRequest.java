@@ -1,12 +1,24 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class AddTenant {
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddTenantRequest {
     public static final int MIN_TENANT_NAME_LENGTH=5;
     public static final int MAX_TENANT_NAME_LENGTH=10;
 
+    @Valid
     @NotNull(message = "Header is mandatory")
     Head head;
 

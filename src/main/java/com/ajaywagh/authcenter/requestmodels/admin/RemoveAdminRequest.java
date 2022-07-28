@@ -1,11 +1,23 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import static com.ajaywagh.authcenter.requestmodels.admin.Head.MAX_USERID_LENGTH;
 import static com.ajaywagh.authcenter.requestmodels.admin.Head.MIN_USERID_LENGTH;
 
-public class RemoveAdmin {
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class RemoveAdminRequest {
+    @Valid
     @NotNull(message = "Header is mandatory")
     Head head;
 
