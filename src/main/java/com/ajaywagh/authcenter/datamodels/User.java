@@ -24,7 +24,10 @@ public class User {
     @Column(nullable = false,name = "userid")
     private String userId;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
+    private String salt;
+
+    @Column(nullable = false)
     private String hash;
     @OneToMany
     @ToString.Exclude

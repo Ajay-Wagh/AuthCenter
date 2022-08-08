@@ -1,21 +1,11 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import lombok.*;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class ListAdminRequest {
+@ToString
+public class ListAdminRequest extends AdminRequest{
 
-    @Valid
-    @NotNull(message = "Header is mandatory")
-    Head head;
 }

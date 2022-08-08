@@ -1,8 +1,8 @@
 package com.ajaywagh.authcenter.responsemodels.admin;
 
+import com.ajaywagh.authcenter.responsemodels.Response;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -10,13 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class AdminResponse {
-
-    @NotNull
-    Success success;
-
+public class AdminResponse extends Response {
     String token;
-
     List<Object> list;
-
 }

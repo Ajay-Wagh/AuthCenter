@@ -25,6 +25,9 @@ public class Admin {
     @Column(nullable = false)
     private String hash;
 
+    @Column(nullable = false)
+    private String salt;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,4 +40,5 @@ public class Admin {
     public int hashCode() {
         return getClass().hashCode();
     }
+
 }

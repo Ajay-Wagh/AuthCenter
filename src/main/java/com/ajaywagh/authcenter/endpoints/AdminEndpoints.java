@@ -2,7 +2,9 @@ package com.ajaywagh.authcenter.endpoints;
 
 import com.ajaywagh.authcenter.requestmodels.admin.AddAdminRequest;
 import com.ajaywagh.authcenter.responsemodels.admin.AdminResponse;
-import com.ajaywagh.authcenter.responsemodels.admin.Success;
+import com.ajaywagh.authcenter.responsemodels.Success;
+import com.ajaywagh.authcenter.services.admin.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,12 +15,12 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/admin",method = RequestMethod.POST)
 public class AdminEndpoints {
+    @Autowired
+    AdminService adminService;
 
     @RequestMapping("/admin/add")
     public AdminResponse addAdmin(@Valid  @RequestBody AddAdminRequest addAdminRequest){
-        AdminResponse adminResponse=new AdminResponse();
-        adminResponse.setSuccess(Success.TRUE);
-        return adminResponse;
+        return adminService.add(addAdminRequest);
     }
 
 }
