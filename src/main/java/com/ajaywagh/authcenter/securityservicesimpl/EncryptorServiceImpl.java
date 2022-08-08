@@ -1,24 +1,21 @@
 package com.ajaywagh.authcenter.securityservicesimpl;
 
 import com.ajaywagh.authcenter.securityservices.EncryptorService;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 
-@Component("encryptor")
+@Component()
 public class EncryptorServiceImpl implements EncryptorService {
     @Value("${hashing_algorithm}")
     String HASHING_ALGO;
 
     @Override
-    public String encrypt(String password) {
-        SecureRandom random=new SecureRandom();
-        byte[] salt=new byte[16];
-        random.nextBytes(salt);
+    public String encrypt(String password,byte[] salt) {
         byte[] hashedPass;
         try {
             MessageDigest messageDigest=MessageDigest.getInstance(HASHING_ALGO);
@@ -28,6 +25,6 @@ public class EncryptorServiceImpl implements EncryptorService {
             throw new RuntimeException(e);
         }
 
-        return new String(hashedPass,StandardCharsets.UTF_8);
+        return Base64.encodeBase64String(hashedPass);
     }
 }

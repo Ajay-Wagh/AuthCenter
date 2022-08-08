@@ -1,11 +1,7 @@
 package com.ajaywagh.authcenter.requestmodels.admin;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,10 +13,8 @@ import static com.ajaywagh.authcenter.requestmodels.admin.AddAppRequest.MIN_APP_
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RemoveAppRequest {
-    @Valid
-    @NotNull(message = "Header is mandatory")
-    Head head;
+@ToString
+public class RemoveAppRequest extends AdminRequest{
 
     @NotNull(message = "appId is required")
     @Size(min = MIN_APP_ID_LENGTH,max = MAX_APP_ID_LENGTH,message ="appId must have at least "+MIN_APP_ID_LENGTH+" characters and max "+MAX_APP_ID_LENGTH+" characters" )
