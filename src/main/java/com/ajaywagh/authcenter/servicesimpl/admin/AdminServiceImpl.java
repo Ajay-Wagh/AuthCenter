@@ -11,6 +11,8 @@ import com.ajaywagh.authcenter.responsemodels.admin.AdminResponse;
 import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import com.ajaywagh.authcenter.services.admin.AdminService;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +29,13 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     EncryptorService encryptorService;
 
+    Logger logger= LoggerFactory.getLogger(AdminServiceImpl.class);
+
     private final SecureRandom random=new SecureRandom();
 
     @Override
     public AdminResponse add(AddAdminRequest addAdminRequest) {
+        logger.debug("Start add");
         verifyAdmin(addAdminRequest);
         byte[] salt=new byte[15];
         random.nextBytes(salt);
@@ -38,6 +43,7 @@ public class AdminServiceImpl implements AdminService {
         adminRepository.saveAndFlush(admin);
         AdminResponse adminResponse=new AdminResponse();
         adminResponse.setSuccess(Success.TRUE);
+        logger.debug("End add");
         return adminResponse;
     }
 
@@ -53,15 +59,16 @@ public class AdminServiceImpl implements AdminService {
 
 
     private void verifyAdmin(@NotNull AddAdminRequest addAdminRequest)throws EntityNotFoundException{
+        logger.debug("Start verifyAdmin");
         Admin existingAdmin;
         try {
             existingAdmin = adminRepository.getReferenceById(addAdminRequest.getUserId());
             if(!existingAdmin.getHash().equals(encryptorService.encrypt(addAdminRequest.getPassword(), Base64.decodeBase64(existingAdmin.getSalt())))){
-
                 throw new InvalidCredentialsException();
             }
         }catch (EntityNotFoundException exception){
             throw new InvalidCredentialsException();
         }
+        logger.debug("End verifyAdmin");
     }
 }
