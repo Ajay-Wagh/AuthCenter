@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,12 +32,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<Response> handleInvalidCredentialsException(InvalidCredentialsException exception){
-        return invalidCredentialsExceptionService.handleInvalidCredentialsException(exception);
+        return invalidCredentialsExceptionService.handleException(exception);
     }
 
     @ExceptionHandler(InvalidHeaderException.class)
     public ResponseEntity<Response> handleInvalidHeaderException(InvalidHeaderException invalidHeaderException){
-        return invalidHeaderExceptionService.handleInvalidHeaderException(invalidHeaderException);
+        return invalidHeaderExceptionService.handleException(invalidHeaderException);
     }
 
 
@@ -46,12 +47,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    @NonNull
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(@NonNull MethodArgumentNotValidException ex, @NonNull HttpHeaders headers, @NonNull HttpStatus status, @NonNull WebRequest request) {
         return argumentInvalidExceptionService.handleException(ex);
     }
 
     @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    @NonNull
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(@NonNull HttpMessageNotReadableException ex, @NonNull HttpHeaders headers, @NonNull HttpStatus status, @NonNull WebRequest request) {
         return messageNotReadableExceptionService.handleException(ex);
     }
 }

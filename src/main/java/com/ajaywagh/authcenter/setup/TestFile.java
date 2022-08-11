@@ -1,7 +1,6 @@
 package com.ajaywagh.authcenter.setup;
 
 import com.ajaywagh.authcenter.securityservices.EncryptorService;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -19,6 +18,7 @@ public class TestFile {
 
         @EventListener(ApplicationReadyEvent.class)
         public void run() {
+
 //                System.out.println("Testing...");
 //                String password="ajaywagh";
 //                byte[] salt=new byte[15];
