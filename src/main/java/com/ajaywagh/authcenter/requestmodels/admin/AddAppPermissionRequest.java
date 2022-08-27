@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AddAppPermissionRequest extends AdminRequest{
     public static final int MIN_APP_PERMISSION_LENGTH=4;
     public static final int MAX_APP_PERMISSION_LENGTH=20;

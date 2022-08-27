@@ -3,6 +3,7 @@ package com.ajaywagh.authcenter.servicesimpl.admin;
 import com.ajaywagh.authcenter.datamodels.Admin;
 import com.ajaywagh.authcenter.datarepositories.AdminRepository;
 import com.ajaywagh.authcenter.exceptions.InvalidCredentialsException;
+import com.ajaywagh.authcenter.log.LoggedClass;
 import com.ajaywagh.authcenter.requestmodels.admin.AddAdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.ListAdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.RemoveAdminRequest;
@@ -21,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import java.security.SecureRandom;
 
 @Service
+@LoggedClass
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
@@ -29,13 +31,11 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     EncryptorService encryptorService;
 
-    Logger logger= LoggerFactory.getLogger(AdminServiceImpl.class);
 
     private final SecureRandom random=new SecureRandom();
 
     @Override
     public AdminResponse add(AddAdminRequest addAdminRequest) {
-        logger.debug("Start add");
         verifyAdmin(addAdminRequest);
         byte[] salt=new byte[15];
         random.nextBytes(salt);
@@ -43,7 +43,6 @@ public class AdminServiceImpl implements AdminService {
         adminRepository.saveAndFlush(admin);
         AdminResponse adminResponse=new AdminResponse();
         adminResponse.setSuccess(Success.TRUE);
-        logger.debug("End add");
         return adminResponse;
     }
 
@@ -59,7 +58,6 @@ public class AdminServiceImpl implements AdminService {
 
 
     private void verifyAdmin(@NotNull AddAdminRequest addAdminRequest)throws EntityNotFoundException{
-        logger.debug("Start verifyAdmin");
         Admin existingAdmin;
         try {
             existingAdmin = adminRepository.getReferenceById(addAdminRequest.getUserId());
@@ -69,6 +67,5 @@ public class AdminServiceImpl implements AdminService {
         }catch (EntityNotFoundException exception){
             throw new InvalidCredentialsException();
         }
-        logger.debug("End verifyAdmin");
     }
 }

@@ -13,7 +13,7 @@ import static com.ajaywagh.authcenter.requestmodels.admin.AddAppRequest.MIN_APP_
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class RemoveAppRequest extends AdminRequest{
 
     @NotNull(message = "appId is required")

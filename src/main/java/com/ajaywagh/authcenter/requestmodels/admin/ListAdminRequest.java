@@ -5,7 +5,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class ListAdminRequest extends AdminRequest{
 
 }

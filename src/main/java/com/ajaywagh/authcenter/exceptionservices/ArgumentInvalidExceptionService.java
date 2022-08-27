@@ -1,5 +1,6 @@
 package com.ajaywagh.authcenter.exceptionservices;
 
+import com.ajaywagh.authcenter.log.LoggedClass;
 import com.ajaywagh.authcenter.responsemodels.Error;
 import com.ajaywagh.authcenter.responsemodels.ErrorCode;
 import com.ajaywagh.authcenter.responsemodels.Response;
@@ -12,19 +13,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @Service
+@LoggedClass
 public class ArgumentInvalidExceptionService {
 
-    Logger logger= LoggerFactory.getLogger(ArgumentInvalidExceptionService.class);
-
     public ResponseEntity<Object> handleException(MethodArgumentNotValidException exception){
-        logger.debug("Start handleException");
         Response response=new Response();
         response.setSuccess(Success.FALSE);
         StringBuilder builder=new StringBuilder();
         exception.getAllErrors().forEach(err->{
             builder.append(err.getDefaultMessage()).append(" ");});
         response.setError(new Error(ErrorCode.INVALID_REQUEST, builder.toString()));
-        logger.debug("End handleException");
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AddUserChannelRequest extends AdminRequest{
     public static final int MIN_USER_CHANNEL_LENGTH =2;
     public static final int MAX_USER_CHANNEL_LENGTH =10;

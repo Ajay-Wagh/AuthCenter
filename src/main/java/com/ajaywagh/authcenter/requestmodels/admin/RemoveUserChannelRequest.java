@@ -13,7 +13,7 @@ import static com.ajaywagh.authcenter.requestmodels.admin.AddUserChannelRequest.
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class RemoveUserChannelRequest extends AdminRequest{
 
     @NotNull(message = "userChannel is mandatory")

@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AdminRequest extends Request {
     public static final int MIN_USERID_LENGTH=3;
     public static final int MAX_USERID_LENGTH=10;

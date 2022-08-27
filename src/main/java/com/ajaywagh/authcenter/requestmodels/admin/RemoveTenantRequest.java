@@ -13,7 +13,7 @@ import static com.ajaywagh.authcenter.requestmodels.admin.AddTenantRequest.MIN_T
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class RemoveTenantRequest extends AdminRequest{
 
     @NotNull(message = "tenantName is required")

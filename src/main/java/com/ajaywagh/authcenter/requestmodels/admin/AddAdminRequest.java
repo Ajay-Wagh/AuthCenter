@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AddAdminRequest extends AdminRequest{
 
     @Pattern(regexp = "^[a-z0-9]+$")

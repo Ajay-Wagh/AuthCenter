@@ -3,6 +3,7 @@ package com.ajaywagh.authcenter.setup;
 
 import com.ajaywagh.authcenter.datamodels.Admin;
 import com.ajaywagh.authcenter.datarepositories.AdminRepository;
+import com.ajaywagh.authcenter.log.LoggedClass;
 import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.security.SecureRandom;
 
 @Component
+@LoggedClass
 public class InitPassword {
     @Value("${default_admin_id}")
     String defaultAdminId;

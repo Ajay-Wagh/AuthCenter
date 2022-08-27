@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class Error {
     @NotNull
     ErrorCode errorCode;

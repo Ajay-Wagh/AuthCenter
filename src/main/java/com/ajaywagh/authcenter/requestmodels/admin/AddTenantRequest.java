@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AddTenantRequest extends AdminRequest{
     public static final int MIN_TENANT_NAME_LENGTH=5;
     public static final int MAX_TENANT_NAME_LENGTH=10;

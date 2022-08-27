@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class AddAppRequest extends AdminRequest{
     public static final int MIN_APP_ID_LENGTH=5;
     public static final int MAX_APP_ID_LENGTH=15;
