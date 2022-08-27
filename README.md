@@ -1,3 +1,3 @@
 # AuthCenter
 
-Authentication provider for Watchface
+Simple Authentication Server based on Spring Boot
