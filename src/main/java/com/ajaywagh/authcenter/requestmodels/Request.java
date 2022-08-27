@@ -1,5 +1,12 @@
 package com.ajaywagh.authcenter.requestmodels;
 
-public class Request {
+import lombok.*;
 
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@AllArgsConstructor
+public class Request {
+    String corrId;
 }

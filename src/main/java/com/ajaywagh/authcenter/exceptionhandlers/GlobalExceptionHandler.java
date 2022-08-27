@@ -1,5 +1,6 @@
 package com.ajaywagh.authcenter.exceptionhandlers;
 
+import com.ajaywagh.authcenter.exceptions.AccessDeniedException;
 import com.ajaywagh.authcenter.exceptions.InvalidCredentialsException;
 import com.ajaywagh.authcenter.exceptions.InvalidHeaderException;
 import com.ajaywagh.authcenter.exceptionservices.*;
@@ -29,6 +30,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     InvalidHeaderExceptionService invalidHeaderExceptionService;
     @Autowired
     MessageNotReadableExceptionService messageNotReadableExceptionService;
+    @Autowired
+    AccessDeniedExceptionService accessDeniedExceptionService;
 
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<Response> handleInvalidCredentialsException(InvalidCredentialsException exception){
@@ -39,6 +42,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Response> handleInvalidHeaderException(InvalidHeaderException invalidHeaderException){
         return invalidHeaderExceptionService.handleException(invalidHeaderException);
     }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Response> handleAccessDeniedException(AccessDeniedException accessDeniedException){
+        return accessDeniedExceptionService.handleException(accessDeniedException);
+    }
+
 
 
     @ExceptionHandler(Exception.class)

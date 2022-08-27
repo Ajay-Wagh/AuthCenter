@@ -11,6 +11,7 @@ import com.ajaywagh.authcenter.responsemodels.Success;
 import com.ajaywagh.authcenter.responsemodels.admin.AdminResponse;
 import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import com.ajaywagh.authcenter.services.admin.AdminService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import java.security.SecureRandom;
 
 @Service
 @LoggedClass
+@Slf4j
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
@@ -57,7 +59,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
-    private void verifyAdmin(@NotNull AddAdminRequest addAdminRequest)throws EntityNotFoundException{
+    private void verifyAdmin(@NotNull AddAdminRequest addAdminRequest){
+        log.debug("start of verifyAdmin");
         Admin existingAdmin;
         try {
             existingAdmin = adminRepository.getReferenceById(addAdminRequest.getUserId());
@@ -67,5 +70,6 @@ public class AdminServiceImpl implements AdminService {
         }catch (EntityNotFoundException exception){
             throw new InvalidCredentialsException();
         }
+        log.debug("end of verifyAdmin");
     }
 }

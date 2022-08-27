@@ -1,5 +1,6 @@
 package com.ajaywagh.authcenter.log;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
@@ -9,9 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Slf4j
 public class MethodLogger {
-
-    Logger logger= LoggerFactory.getLogger(MethodLogger.class);
 
     @Pointcut("@within(com.ajaywagh.authcenter.log.LoggedClass)")
     public void loggedClass(){}
@@ -21,18 +21,18 @@ public class MethodLogger {
     @Before("loggedClass() || loggedMethod()")
     public void adviceBefore(JoinPoint joinPoint){
         Signature signature=joinPoint.getSignature();
-        logger.debug("Start of method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
+        log.debug("Start of method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
     }
 
     @After("loggedClass() || loggedMethod()")
     public void adviceAfter(JoinPoint joinPoint){
         Signature signature=joinPoint.getSignature();
-        logger.debug("End of method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
+        log.debug("End of method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
     }
 
     @AfterThrowing("loggedClass() || loggedMethod()")
     public void adviceAfterThrowing(JoinPoint joinPoint){
         Signature signature=joinPoint.getSignature();
-        logger.debug("Exception by method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
+        log.debug("Exception by method \"{}\" of class \"{}\"",signature.getName(),signature.getDeclaringTypeName());
     }
 }
