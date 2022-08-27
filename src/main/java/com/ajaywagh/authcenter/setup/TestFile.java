@@ -1,40 +1,40 @@
 package com.ajaywagh.authcenter.setup;
 
-import com.ajaywagh.authcenter.POJO.App;
-import com.ajaywagh.authcenter.POJO.AppPermission;
-import com.ajaywagh.authcenter.repositories.AppPermissionRepository;
-import com.ajaywagh.authcenter.repositories.AppRepository;
+import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.security.SecureRandom;
 
-//@Component
+@Component
 public class TestFile {
-    //@Autowired
-    AppPermissionRepository appPermissionRepository;
-    //@Autowired
-    AppRepository appRepository;
 
-    //@EventListener(ApplicationReadyEvent.class)
-    public void test(){
-        AppPermission appPermission=new AppPermission();
-        appPermission.setPermission("Create");
-        appPermissionRepository.saveAndFlush(appPermission);
+        @Autowired
+        EncryptorService encryptorService;
 
-        AppPermission appPermission2=new AppPermission();
-        appPermission2.setPermission("Update");
-        appPermissionRepository.saveAndFlush(appPermission2);
+        private final SecureRandom random=new SecureRandom();
 
-        Set<AppPermission> set=new HashSet<>();
-        set.add(appPermission);
-        set.add(appPermission2);
+        @EventListener(ApplicationReadyEvent.class)
+        public void run() {
 
-        App app=new App("1","tkgfhgfgf",set);
-        appRepository.saveAndFlush(app);
+//                System.out.println("Testing...");
+//                String password="ajaywagh";
+//                byte[] salt=new byte[15];
+//                random.nextBytes(salt);
+//                String saltString= Base64.encodeBase64String(salt);
+//                System.out.println("Password is : "+password);
+//                System.out.println("Salt is : "+saltString);
+//                String hash= encryptorService.encrypt(password,salt);
+//                System.out.println("Hash is : "+hash);
+//                System.out.println("Encrypting again to check....");
+//                String password2="ajaywagh";
+//                byte[] salt2=Base64.decodeBase64(saltString);
+//                String hash2= encryptorService.encrypt(password2,salt2);
+//                System.out.println("Password is : "+password2);
+//                System.out.println("Salt is : "+Base64.encodeBase64String(salt2));
+//                System.out.println("Hash is : "+hash2);
 
-    }
+        }
 }

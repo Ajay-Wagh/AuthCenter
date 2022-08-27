@@ -1,14 +1,17 @@
 package com.ajaywagh.authcenter.setup;
 
 
-import com.ajaywagh.authcenter.POJO.Admin;
-import com.ajaywagh.authcenter.repositories.AdminRepository;
-import com.ajaywagh.authcenter.securityservices.Encryptor;
+import com.ajaywagh.authcenter.datamodels.Admin;
+import com.ajaywagh.authcenter.datarepositories.AdminRepository;
+import com.ajaywagh.authcenter.securityservices.EncryptorService;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.security.SecureRandom;
 
 @Component
 public class InitPassword {
@@ -22,11 +25,14 @@ public class InitPassword {
     AdminRepository adminRepository;
 
     @Autowired
-    Encryptor encryptor;
+    EncryptorService encryptorService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void setInitialPassword() {
-        Admin admin = new Admin(defaultAdminId, encryptor.encrypt(defaultAdminPassword));
+        byte[] salt=new byte[15];
+        SecureRandom random=new SecureRandom();
+        random.nextBytes(salt);
+        Admin admin = new Admin(defaultAdminId, encryptorService.encrypt(defaultAdminPassword,salt), Base64.encodeBase64String(salt));
         adminRepository.saveAndFlush(admin);
     }
 }
