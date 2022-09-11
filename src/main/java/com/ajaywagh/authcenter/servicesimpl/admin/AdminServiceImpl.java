@@ -5,6 +5,7 @@ import com.ajaywagh.authcenter.datarepositories.AdminRepository;
 import com.ajaywagh.authcenter.exceptions.InvalidCredentialsException;
 import com.ajaywagh.authcenter.log.LoggedClass;
 import com.ajaywagh.authcenter.requestmodels.admin.AddAdminRequest;
+import com.ajaywagh.authcenter.requestmodels.admin.AdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.ListAdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.RemoveAdminRequest;
 import com.ajaywagh.authcenter.responsemodels.Success;
@@ -13,8 +14,6 @@ import com.ajaywagh.authcenter.securityservices.EncryptorService;
 import com.ajaywagh.authcenter.services.admin.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +49,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminResponse remove(RemoveAdminRequest removeAdminRequest) {
+
         return null;
     }
 
@@ -59,12 +59,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
-    private void verifyAdmin(@NotNull AddAdminRequest addAdminRequest){
+    private void verifyAdmin(@NotNull AdminRequest adminRequest){
         log.debug("start of verifyAdmin");
         Admin existingAdmin;
         try {
-            existingAdmin = adminRepository.getReferenceById(addAdminRequest.getUserId());
-            if(!existingAdmin.getHash().equals(encryptorService.encrypt(addAdminRequest.getPassword(), Base64.decodeBase64(existingAdmin.getSalt())))){
+            existingAdmin = adminRepository.getReferenceById(adminRequest.getUserId());
+            if(!existingAdmin.getHash().equals(encryptorService.encrypt(adminRequest.getPassword(), Base64.decodeBase64(existingAdmin.getSalt())))){
                 throw new InvalidCredentialsException();
             }
         }catch (EntityNotFoundException exception){

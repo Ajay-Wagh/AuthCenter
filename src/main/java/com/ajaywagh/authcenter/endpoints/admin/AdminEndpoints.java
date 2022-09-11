@@ -1,4 +1,4 @@
-package com.ajaywagh.authcenter.endpoints;
+package com.ajaywagh.authcenter.endpoints.admin;
 
 import com.ajaywagh.authcenter.requestmodels.admin.AddAdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.RemoveAdminRequest;

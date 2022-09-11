@@ -31,10 +31,12 @@ public class InitPassword {
 
     @EventListener(ApplicationReadyEvent.class)
     public void setInitialPassword() {
-        byte[] salt=new byte[15];
-        SecureRandom random=new SecureRandom();
-        random.nextBytes(salt);
-        Admin admin = new Admin(defaultAdminId, encryptorService.encrypt(defaultAdminPassword,salt), Base64.encodeBase64String(salt));
-        adminRepository.saveAndFlush(admin);
+        if(!adminRepository.existsById(defaultAdminId)){
+            byte[] salt=new byte[15];
+            SecureRandom random=new SecureRandom();
+            random.nextBytes(salt);
+            Admin admin = new Admin(defaultAdminId, encryptorService.encrypt(defaultAdminPassword,salt), Base64.encodeBase64String(salt));
+            adminRepository.saveAndFlush(admin);
+        }
     }
 }
