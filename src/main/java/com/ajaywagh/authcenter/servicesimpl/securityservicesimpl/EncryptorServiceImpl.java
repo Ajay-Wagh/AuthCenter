@@ -1,10 +1,8 @@
-package com.ajaywagh.authcenter.securityservicesimpl;
+package com.ajaywagh.authcenter.servicesimpl.securityservicesimpl;
 
 import com.ajaywagh.authcenter.log.LoggedClass;
-import com.ajaywagh.authcenter.securityservices.EncryptorService;
+import com.ajaywagh.authcenter.services.securityservices.EncryptorService;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

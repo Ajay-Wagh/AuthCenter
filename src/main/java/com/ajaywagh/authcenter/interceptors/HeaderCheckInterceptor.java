@@ -18,8 +18,8 @@ public class HeaderCheckInterceptor implements HandlerInterceptor {
 
     public static final int CORR_ID_MIN_SIZE=5;
     public static final int CORR_ID_MAX_SIZE=15;
-    public static final String CORR_HEADER_ID="CorrelationId";
-    public static final String INTEGRITY_KEY_HEADER_ID="IntegrityKey";
+    public static final String CORR_HEADER_ID="correlationid";
+    public static final String INTEGRITY_KEY_HEADER_ID="integritykey";
     public static final String INTEGRITY_KEY="qwerQWER124578";
 
 

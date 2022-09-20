@@ -10,7 +10,7 @@ import com.ajaywagh.authcenter.requestmodels.admin.ListAdminRequest;
 import com.ajaywagh.authcenter.requestmodels.admin.RemoveAdminRequest;
 import com.ajaywagh.authcenter.responsemodels.Success;
 import com.ajaywagh.authcenter.responsemodels.admin.AdminResponse;
-import com.ajaywagh.authcenter.securityservices.EncryptorService;
+import com.ajaywagh.authcenter.services.securityservices.EncryptorService;
 import com.ajaywagh.authcenter.services.admin.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;

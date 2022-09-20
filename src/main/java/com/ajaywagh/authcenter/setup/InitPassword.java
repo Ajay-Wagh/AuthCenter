@@ -4,7 +4,7 @@ package com.ajaywagh.authcenter.setup;
 import com.ajaywagh.authcenter.datamodels.Admin;
 import com.ajaywagh.authcenter.datarepositories.AdminRepository;
 import com.ajaywagh.authcenter.log.LoggedClass;
-import com.ajaywagh.authcenter.securityservices.EncryptorService;
+import com.ajaywagh.authcenter.services.securityservices.EncryptorService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

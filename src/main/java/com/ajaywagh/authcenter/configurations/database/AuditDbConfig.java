@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,7 +18,7 @@ import java.util.HashMap;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "auditDbEntityManagerFactory",
         transactionManagerRef = "auditDbTransactionManager",
-        basePackages = "com.ajaywagh.authcenter.log.audit"
+        basePackages = "com.ajaywagh.authcenter.log.audit.repository"
 )
 public class AuditDbConfig {
 
@@ -37,7 +36,7 @@ public class AuditDbConfig {
     public LocalContainerEntityManagerFactoryBean auditDbEntityManagerFactory(){
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(auditDbDataSource());
-        em.setPackagesToScan("com.ajaywagh.authcenter.log.audit");
+        em.setPackagesToScan("com.ajaywagh.authcenter.log.audit.model");
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -57,6 +56,5 @@ public class AuditDbConfig {
                 auditDbEntityManagerFactory().getObject());
         return transactionManager;
     }
-
 
 }
