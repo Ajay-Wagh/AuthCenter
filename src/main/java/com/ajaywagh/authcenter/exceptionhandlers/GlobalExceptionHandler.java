@@ -3,6 +3,7 @@ package com.ajaywagh.authcenter.exceptionhandlers;
 import com.ajaywagh.authcenter.exceptions.AccessDeniedException;
 import com.ajaywagh.authcenter.exceptions.InvalidCredentialsException;
 import com.ajaywagh.authcenter.exceptions.InvalidHeaderException;
+import com.ajaywagh.authcenter.exceptions.ObjectNotFoundException;
 import com.ajaywagh.authcenter.exceptionservices.*;
 import com.ajaywagh.authcenter.responsemodels.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     MessageNotReadableExceptionService messageNotReadableExceptionService;
     @Autowired
     AccessDeniedExceptionService accessDeniedExceptionService;
+    @Autowired
+    ObjectNotFoundExceptionService objectNotFoundExceptionService;
 
     @ExceptionHandler(InvalidCredentialsException.class)
     public ResponseEntity<Response> handleInvalidCredentialsException(InvalidCredentialsException exception){
@@ -46,6 +49,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Response> handleAccessDeniedException(AccessDeniedException accessDeniedException){
         return accessDeniedExceptionService.handleException(accessDeniedException);
+    }
+
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ResponseEntity<Response> handleObjectNotFoundException(ObjectNotFoundException objectNotFoundException){
+        return objectNotFoundExceptionService.handleException(objectNotFoundException);
     }
 
 

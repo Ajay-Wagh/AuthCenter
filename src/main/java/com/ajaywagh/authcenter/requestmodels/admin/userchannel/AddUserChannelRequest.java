@@ -1,5 +1,6 @@
-package com.ajaywagh.authcenter.requestmodels.admin;
+package com.ajaywagh.authcenter.requestmodels.admin.userchannel;
 
+import com.ajaywagh.authcenter.requestmodels.admin.AdminRequest;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class AddUserChannelRequest extends AdminRequest{
+public class AddUserChannelRequest extends AdminRequest {
     public static final int MIN_USER_CHANNEL_LENGTH =2;
     public static final int MAX_USER_CHANNEL_LENGTH =10;
 

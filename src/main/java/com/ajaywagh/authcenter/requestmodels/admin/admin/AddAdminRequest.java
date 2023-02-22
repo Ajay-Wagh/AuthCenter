@@ -1,5 +1,6 @@
-package com.ajaywagh.authcenter.requestmodels.admin;
+package com.ajaywagh.authcenter.requestmodels.admin.admin;
 
+import com.ajaywagh.authcenter.requestmodels.admin.AdminRequest;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class AddAdminRequest extends AdminRequest{
+public class AddAdminRequest extends AdminRequest {
 
     @Pattern(regexp = "^[a-z0-9]+$")
     @NotNull(message = "newUserId is required")

@@ -78,7 +78,13 @@
 			<artifactId>mariadb-java-client</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<!--		Database Dependencies End-->
+        <!--		Database Dependencies End-->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 
 	</dependencies>

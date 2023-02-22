@@ -2,6 +2,8 @@ package com.ajaywagh.authcenter.responsemodels;
 
 import lombok.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 @Getter

@@ -5,12 +5,13 @@ import com.ajaywagh.authcenter.services.securityservices.EncryptorService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-@Component
+@Service
 @LoggedClass
 public class EncryptorServiceImpl implements EncryptorService {
     @Value("${hashing_algorithm}")

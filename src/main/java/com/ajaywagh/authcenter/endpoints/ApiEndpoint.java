@@ -18,6 +18,7 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.util.Pair;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,10 +61,15 @@ public class ApiEndpoint {
         int resCode=response.getCode();
         HttpHeaders httpHeaders=extractHeaders(response);
         String responseString=extractResponseString(response);
-        logResponse(responseString,httpHeaders,resCode);
+        Pair<Integer, String> pair=handle404(resCode,responseString);
+        logResponse(pair.getSecond(),httpHeaders,pair.getFirst());
         removeDefaultHeaders(httpHeaders);
-
         return new ResponseEntity<>(responseString,httpHeaders, resCode);
+    }
+
+    private Pair<Integer,String> handle404(int resCode, String responseString) {
+        //-handle 404 as invalid operation specified...
+        return Pair.of(resCode,responseString);
     }
 
     private void removeDefaultHeaders(HttpHeaders httpHeaders) {
@@ -121,7 +127,7 @@ public class ApiEndpoint {
     }
 
     private String removePasswords(JsonNode input,String[] pointers){
-        log.debug("start method removePasswords (from request log)");
+        log.debug("start method removePasswords (from log message)");
         JsonNode copy=input.deepCopy();
 
         for(String pointer: pointers){
@@ -136,11 +142,11 @@ public class ApiEndpoint {
                     parentObjectNode.put(field, "<masked>");
                 }
             }else {
-                log.error("Parent Json node is missing or is not object");
+                log.error("Parent Json node is missing or is not an object");
             }
         }
 
-        log.debug("end method removePasswords (from request log)");
+        log.debug("end method removePasswords (from log message)");
         return copy.toString();
     }
 
@@ -165,7 +171,7 @@ public class ApiEndpoint {
 
         }catch (Exception e){
             log.error("Error while Auditing");
-            throw new Exception("Error while auditing request... Check ApiEndpoint.java");
+            throw new Exception("Error while auditing response... Check ApiEndpoint.java");
         }
     }
 

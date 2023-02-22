@@ -1,5 +1,6 @@
-package com.ajaywagh.authcenter.requestmodels.admin;
+package com.ajaywagh.authcenter.requestmodels.admin.admin;
 
+import com.ajaywagh.authcenter.requestmodels.admin.AdminRequest;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;

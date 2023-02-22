@@ -1,6 +1,7 @@
 package com.ajaywagh.authcenter.responsemodels.admin;
 
 import com.ajaywagh.authcenter.responsemodels.Response;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import java.util.List;
@@ -12,5 +13,6 @@ import java.util.List;
 @ToString(callSuper = true)
 public class AdminResponse extends Response {
     String token;
-    List<Object> list;
+
+    List<String> list;
 }

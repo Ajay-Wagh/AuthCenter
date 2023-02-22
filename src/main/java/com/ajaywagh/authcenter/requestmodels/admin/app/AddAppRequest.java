@@ -1,5 +1,6 @@
-package com.ajaywagh.authcenter.requestmodels.admin;
+package com.ajaywagh.authcenter.requestmodels.admin.app;
 
+import com.ajaywagh.authcenter.requestmodels.admin.AdminRequest;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class AddAppRequest extends AdminRequest{
+public class AddAppRequest extends AdminRequest {
     public static final int MIN_APP_ID_LENGTH=5;
     public static final int MAX_APP_ID_LENGTH=15;
     public static final int MIN_PERMISSIONS_COUNT=1;
